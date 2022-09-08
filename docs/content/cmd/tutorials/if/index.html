@@ -1,0 +1,85 @@
+<!doctype html><html lang=es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>If &#183; Book</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link rel=icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/images/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/images/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link href rel=alternate type=application/rss+xml title=Book><script src=/js/darkmode.js></script></head><body><nav class=nav><div class=nav-container><a href=/><h2 class=nav-title>Book</h2></a><ul><li><a href=/content/><span>Contenido</span></a></li></ul></div></nav><div id=darkModeToggle onclick=toggleDarkMode()>&#9680;</div><main><div class=post><div class=post-info><span>Written by</span></div><h1 class=post-title>If</h1><div class=post-line></div><h1 id=if>If</h1><h2 id=colocar-un-choice-dentro-de-un-if>Colocar un choice dentro de un if</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span><span style=color:#66d9ef>set</span> <span style=color:#66d9ef>/p</span> control_archivo_new=Indica la nueva ruta fuente: \Ejm\: C:\Vaginas\Pelulas --
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#66d9ef>/i</span> <span style=color:#66d9ef>exist</span> %control_archivo_new% (<span style=color:#66d9ef>echo</span> nueva ruta VALIDA) <span style=color:#66d9ef>else</span> (
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span>:
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span> XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span> 		ERROR
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span>    --------------------
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span>:
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span> Ruta no valida - %control_archivo_new%
+</span></span><span style=display:flex><span>choice /c 123 /n /m <span style=color:#e6db74>&#34;		|1| Volver a empezar -- |2| Regresar a inicio -- |3| Regresar al menu principal -- |4| Salir&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#66d9ef>errorlevel</span> <span style=color:#ae81ff>4</span> <span style=color:#66d9ef>call</span> <span style=color:#e6db74>&#34;</span>%ruta_exit%<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#66d9ef>errorlevel</span> <span style=color:#ae81ff>3</span> <span style=color:#66d9ef>call</span> <span style=color:#e6db74>&#34;</span>%ruta_main%<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#66d9ef>errorlevel</span> <span style=color:#ae81ff>2</span> <span style=color:#66d9ef>goto</span> :home
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#66d9ef>errorlevel</span> <span style=color:#ae81ff>1</span> <span style=color:#66d9ef>goto</span> :set_valores_all
+</span></span><span style=display:flex><span>)  
+</span></span></code></pre></div><h2 id=comprar-una-string-con-una-variable>Comprar una string con una variable</h2><p>PARA PODER COMPARAR UNA STRING CON UNA VARIABLE, AL MENOS CON UNA VARIABLE NO SE EL RESULTADO CON UNA STRING.</p><p>EL COMPORTAMIENTO DEL IF SERA QUE SI NO COLOCAS LA STRING ENTRE "" COMILLLAS ENTONCES NO LEERA EL CONETENIDO DE LA MISMA STRING.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#e6db74>&#34;</span>%taller%<span style=color:#e6db74>&#34;</span><span style=color:#f92672>==</span>NONE (<span style=color:#66d9ef>goto</span> :ruta_a_off) no leera el contenido del NONE
+</span></span></code></pre></div><p>PARA QUE FUNCIONE CORRECTAMENTE SE NECESITA.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#e6db74>&#34;</span>%taller%<span style=color:#e6db74>&#34;</span><span style=color:#f92672>==</span><span style=color:#e6db74>&#34;NONE&#34;</span> (<span style=color:#66d9ef>goto</span> :ruta_a_off)
+</span></span></code></pre></div><p>ERROR al usar multi comentarios.</p><p>Al colocar mas de un comentario de un if producira que salga el siguiente mensaje en vez del comentario &ldquo;El sistema no puede encontrar el controlador especificado.&rdquo;, y probe que solo pasa dentro de un if.</p><p>Como en el siguiente ejemplo.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span>@<span style=color:#66d9ef>echo</span> off
+</span></span><span style=display:flex><span><span style=color:#66d9ef>set</span> nalga=culo
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#66d9ef>/i</span> <span style=color:#e6db74>&#34;</span>%nalga%<span style=color:#e6db74>&#34;</span><span style=color:#f92672>==</span><span style=color:#e6db74>&#34;</span>%nalga%<span style=color:#e6db74>&#34;</span> (
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+</span></span><span style=display:flex><span>:<span style=color:#75715e>: Hola</span>
+</span></span><span style=display:flex><span>:<span style=color:#75715e>: Hola</span>
+</span></span><span style=display:flex><span>:<span style=color:#75715e>: Hola</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span>:
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span>            Modulo de Respaldo a la Base de Datos!
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span>:
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>pause</span>
+</span></span></code></pre></div><h2 id=espacios-en-blanco>Espacios en blanco</h2><p>Si colocas espacios en blanco dentro de un if, esto causara que se salga automaticamente del batch, este comportamiento no es normal en un batch, tu puedes colocar espacios tranquilamente como en el segundo ejemplo, no dara error y no mostrara los espacios en el batch.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#66d9ef>/i</span> <span style=color:#66d9ef>exist</span> %xampp% (
+</span></span><span style=display:flex><span>:<span style=color:#75715e>: NALGA</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>echo</span>     El programa xampp esta instalado correctamente
+</span></span><span style=display:flex><span>)<span style=color:#66d9ef>else</span> (<span style=color:#66d9ef>echo</span> No se consiguio el programa xampp)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span> HOLA
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span> NALGA
+</span></span></code></pre></div><h2 id=meter-un-if-dentro-de-otro-if>meter un if dentro de otro if</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#66d9ef>/i</span> <span style=color:#66d9ef>exist</span> %xnube_b% (
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>echo</span> La ruta %nube_B_name% esta ACTIVADA: %xnube_b%
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#66d9ef>/i</span> <span style=color:#e6db74>&#34;</span>%ubicacion%<span style=color:#e6db74>&#34;</span><span style=color:#f92672>==</span><span style=color:#e6db74>&#34;</span>%nube_B%<span style=color:#e6db74>&#34;</span> (<span style=color:#66d9ef>echo</span> Ya existe un respaldo de %nombre% en %nube_B_name%: <span style=color:#e6db74>&#34;</span>%nube_B%<span style=color:#e6db74>&#34;</span>) <span style=color:#66d9ef>else</span> (<span style=color:#66d9ef>echo</span> Todabia no existe un respaldo de %nombre% en: <span style=color:#e6db74>&#34;</span>%nube_B%<span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>	) <span style=color:#66d9ef>else</span> (<span style=color:#66d9ef>echo</span> La ruta %nube_B_name% %xnube_b% no esta disponible)
+</span></span><span style=display:flex><span>		&lt;/code&gt;&lt;/pre&gt;
+</span></span><span style=display:flex><span>		&lt;p&gt;otro ejemplo&lt;/p&gt;
+</span></span><span style=display:flex><span>		&lt;pre&gt;&lt;code&gt;
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> <span style=color:#66d9ef>/i</span> <span style=color:#e6db74>&#34;</span>%ubicacion%<span style=color:#e6db74>&#34;</span><span style=color:#f92672>==</span><span style=color:#e6db74>&#34;</span>%taller_servidor%<span style=color:#e6db74>&#34;</span> (<span style=color:#66d9ef>echo</span> Actualmente te encuentras en esta ubicacion) <span style=color:#66d9ef>else</span> (
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#66d9ef>/i</span> <span style=color:#66d9ef>exist</span> %xtaller_servidor% (
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>echo</span> La ubicacion taller servidor se encuentra ACTIVADA: %xtaller_servidor%
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#66d9ef>/i</span> <span style=color:#66d9ef>exist</span> <span style=color:#e6db74>&#34;</span>%taller_servidor%<span style=color:#e6db74>&#34;</span> (<span style=color:#66d9ef>echo</span> Ya existe un respaldo de %nombre% en taller servidor: <span style=color:#e6db74>&#34;</span>%taller_servidor%<span style=color:#e6db74>&#34;</span>) <span style=color:#66d9ef>else</span> (<span style=color:#66d9ef>echo</span> Todabia no existe un respaldo de %nombre% en taller respaldo: <span style=color:#e6db74>&#34;</span>%taller_servidor%<span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>	) <span style=color:#66d9ef>else</span> (<span style=color:#66d9ef>echo</span> La ubicacion taller servidor se encuentra DESACTIVADA: %xtaller_servidor%)
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><h2 id=error-al-comprar-variables>ERROR al comprar variables</h2><p>TEner cuidado al comprar 2s variables, en algunos casos al encerrar las vairalbes en [], no va a reconocer la compracion, es mejor simplemente comparar las variables.</p><h2 id=error-comentario-entre-elses>ERROR comentario entre elses</h2><p>Si tienes 2s elses termiando una cadena de ifs, al colocar un comentario entre ellas producira un error y se saldra del batch de una.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span>)else (echo La ruta mysql se encuentra DESABILITADA)
+</span></span><span style=display:flex><span>:<span style=color:#75715e>: Final del if de segundo nivel </span>
+</span></span><span style=display:flex><span>)else (echo No se consiguio el programa xampp)
+</span></span><span style=display:flex><span>:<span style=color:#75715e>: Final del if central</span>
+</span></span></code></pre></div><h2 id=error-terminar-un-else>ERROR terminar un else</h2><p>Al colocar un else tiene que estar antecedido del cierre del if que lo precede.
+)else(, en estos casos dara error, dira que else no es reconocido como un comando interno.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmd data-lang=cmd><span style=display:flex><span>			<span style=color:#75715e>)</span>
+</span></span><span style=display:flex><span>else (
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>o
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span><span style=color:#66d9ef>echo</span>: )
+</span></span><span style=display:flex><span>else (
+</span></span></code></pre></div></div><div class=pagination><a href=/content/cmd/tutorials/instalar-programas/ class="left arrow">&#8592;</a>
+<a href=/content/hugo/tutorials/functions/ class="right arrow">&#8594;</a>
+<a href=# class=top>Top</a></div></main><footer><span>&copy; <time datetime="2022-09-08 07:41:05.1902808 -0400 -04 m=+0.780273101">2022</time> . Made with <a href=https://gohugo.io>Hugo</a> using the <a href=https://github.com/EmielH/tale-hugo/>Tale</a> theme.</span></footer></body></html>

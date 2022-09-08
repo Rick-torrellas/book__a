@@ -1,0 +1,11 @@
+baseURL = 'http://example.org/'
+languageCode = 'es'
+title = 'Book'
+theme = "tale"
+[menu]
+  [[menu.main]]
+    identifier = "contenido"
+    name = "Contenido"
+    title = "Contenido"
+    url = "/content/"
+    weight = 0

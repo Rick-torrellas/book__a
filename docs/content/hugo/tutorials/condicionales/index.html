@@ -1,0 +1,31 @@
+<!doctype html><html lang=es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Condicionales &#183; Book</title><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/fonts.css><link rel=icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/images/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/images/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link href rel=alternate type=application/rss+xml title=Book><script src=/js/darkmode.js></script></head><body><nav class=nav><div class=nav-container><a href=/><h2 class=nav-title>Book</h2></a><ul><li><a href=/content/><span>Contenido</span></a></li></ul></div></nav><div id=darkModeToggle onclick=toggleDarkMode()>&#9680;</div><main><div class=post><div class=post-info><span>Written by</span></div><h1 class=post-title>Condicionales</h1><div class=post-line></div><h1 id=condicionales>Condicionales</h1><blockquote><p>source: <a href="https://www.youtube.com/watch?v=juSnHsCX9RU&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3&index=24">If Statements | Hugo - Static Site Generator | Tutorial 19 - YouTube</a></p></blockquote><ul><li><p><strong>eq</strong>: == igual que</p></li><li><p><strong>lt</strong>: &lt; menor que</p></li><li><p><strong>le</strong>: =&lt; menor o igual que</p></li><li><p><strong>gt</strong>: > mayor que</p></li><li><p><strong>ge</strong>: => igual o igual que</p></li><li><p><strong>not</strong>: negacion</p></li><li><p><strong>and</strong>: &&</p></li><li><p><strong>or</strong>: ||</p></li></ul><h2 id=if>If</h2><p>Syntax:</p><pre tabindex=0><code class=language-hugo data-lang=hugo>{{if operador condicion1 condicion2}}
+{{end}}
+</code></pre><p>Ejemplo:</p><pre tabindex=0><code class=language-hugo data-lang=hugo>{{$uno := 2}}
+{{$dos := 2}}
+{{if eq $uno $dos}}
+&lt;p&gt;true&lt;/p&gt;
+{{end}}
+</code></pre><h3 id=else-y-else-if>else y else if</h3><p>En hugo tambien es posible usar tantos <code>else</code> como <code>else if</code>, tantas veces sea necesario</p><pre tabindex=0><code class=language-hugo data-lang=hugo>{{$uno := 2}}
+{{$dos := 2}}
+{{if eq $uno $dos}}
+&lt;p&gt;true&lt;/p&gt;
+{{else if eq $dos $uno}}
+&lt;p&gt;mas true :D&lt;/p&gt;
+{{else}}
+&lt;p&gt;false&lt;/p&gt;
+{{end}}
+</code></pre><h3 id=not>not</h3><blockquote><p>Nota: es importante no tener espacios dentro de los limites de los parentesis, como el ejemplo o si no no funcionara.</p></blockquote><pre tabindex=0><code class=language-hugo data-lang=hugo>{{$uno := 2}}
+{{$dos := 2}}
+{{if not (eq $uno $dos) }}
+&lt;p&gt;false&lt;/p&gt;
+{{end}}
+</code></pre><blockquote><p>Nota: puedes colocar not dentro de otro not.</p></blockquote><h3 id=andor>and,or</h3><pre tabindex=0><code class=language-hugo data-lang=hugo>{{$uno := 1}}
+{{$dos := 2}}
+{{$tres := 1}}
+{{if or (eq $uno $dos ) (eq $uno $tres) }}
+&lt;p&gt;true&lt;/p&gt;
+{{end}}
+</code></pre><blockquote><p>Nota: puedes usar un nor, dentro de una de los parentesis, solo hay que agregar mas parentesis.</p></blockquote><h3 id=tag-property>Tag property</h3><p>Hugo te deja no solo insertar codigo dentro las propiedades de las etiquetas de html, si no escribir condicionales.</p><pre tabindex=0><code class=language-hugo data-lang=hugo>&lt;li style=&#34;{{if eq .Title $title}} background-color: red; {{end}}&#34;&gt;{{.Title}}&lt;/li&gt;
+</code></pre></div><div class=pagination><a href=/content/hugo/tutorials/content/ class="left arrow">&#8592;</a>
+<a href=/content/cmd/tutorials/choice/ class="right arrow">&#8594;</a>
+<a href=# class=top>Top</a></div></main><footer><span>&copy; <time datetime="2022-09-08 07:41:05.220062 -0400 -04 m=+0.810054301">2022</time> . Made with <a href=https://gohugo.io>Hugo</a> using the <a href=https://github.com/EmielH/tale-hugo/>Tale</a> theme.</span></footer></body></html>
