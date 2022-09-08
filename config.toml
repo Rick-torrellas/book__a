@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://rick-torrellas.github.io/book__a'
 languageCode = 'es'
 title = 'Book'
 theme = "tale"
