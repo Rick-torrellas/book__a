@@ -9,3 +9,9 @@ theme = "tale"
     title = "Contenido"
     url = "/content/"
     weight = 0
+  [[menu.main]]
+    identifier = "categorias"
+    name = "Categorias"
+    title = "Categorias"
+    url = "/categories/"
+    weight = 0
