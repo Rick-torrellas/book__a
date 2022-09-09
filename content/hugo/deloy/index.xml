@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Deploy on Book</title><link>https://rick-torrellas.github.io/book__a/content/hugo/deloy/</link><description>Recent content in Deploy on Book</description><generator>Hugo -- gohugo.io</generator><language>es</language><lastBuildDate>Thu, 08 Sep 2022 12:19:08 +0000</lastBuildDate><atom:link href="https://rick-torrellas.github.io/book__a/content/hugo/deloy/index.xml" rel="self" type="application/rss+xml"/><item><title>Github</title><link>https://rick-torrellas.github.io/book__a/content/hugo/deloy/github/</link><pubDate>Thu, 08 Sep 2022 12:19:08 +0000</pubDate><guid>https://rick-torrellas.github.io/book__a/content/hugo/deloy/github/</guid><description>Github source: youtube
+source: official docs
+Primera manera Esta es la mas secilla. Simplemente vamos a construir nuestro sitio en una carpeta llamada docs, y configurar Github Pages para que agarre esta carpeta como la central del sitio. Usaremos este comando.
+hugo -d docs --minify
+Segunda manera Build Hugo With GitHub Action Crear un archivo en .github/workflows/gh-pages.yml, en tu proyecto.
+name: github pages on: push: branches: - main # Set a branch to deploy pull_request: jobs: deploy: runs-on: ubuntu-20.</description></item></channel></rss>
