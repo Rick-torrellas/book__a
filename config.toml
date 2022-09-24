@@ -15,3 +15,9 @@ theme = "tale"
     title = "Categorias"
     url = "/categories/"
     weight = 0
+  [[menu.main]]
+    identifier = "etiquetas"
+    name = "Etiquetas"
+    title = "Etiquetas"
+    url = "/tags/"
+    weight = 0
