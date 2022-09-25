@@ -1,0 +1,91 @@
+<!doctype html><html lang=es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>better-docs &#183; Book</title><link rel=stylesheet href=/book__a/css/style.css><link rel=stylesheet href=/book__a/css/fonts.css><link rel=icon href=/book__a/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/book__a/images/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/book__a/images/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/book__a/images/apple-touch-icon.png><link href rel=alternate type=application/rss+xml title=Book><script src=/book__a/js/darkmode.js></script></head><body><nav class=nav><div class=nav-container><a href=/><h2 class=nav-title>Book</h2></a><ul><li><a href=/book__a/categories/><span>Categorias</span></a></li><li><a href=/book__a/content/><span>Contenido</span></a></li><li><a href=/book__a/tags/><span>Etiquetas</span></a></li></ul></div></nav><div id=darkModeToggle onclick=toggleDarkMode()>&#9680;</div><main><div class=post><div class=post-info><span>Written by</span><br><span>on&nbsp;</span><time datetime="2022-09-08 16:46:21 +0000 UTC">September 8, 2022</time></div><h1 class=post-title>better-docs</h1><div class=post-line></div><h1 id=better-docs>Better Docs</h1><h2 id=category-plugin>@category plugin</h2><h3 id=usage>usage</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span>...
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;tags&#34;</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;allowUnknownTags&#34;</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#34;category&#34;</span>] <span style=color:#75715e>//or true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>},
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;plugins&#34;</span><span style=color:#f92672>:</span> [
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;node_modules/better-docs/category&#34;</span>
+</span></span><span style=display:flex><span>],
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Class description
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @category Category
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @subcategory All
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>YourClass</span> {
+</span></span><span style=display:flex><span>  ....
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=component-plugin>@component plugin</h2><h3 id=installation-instructions>Installation instructions</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span>...
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;tags&#34;</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;allowUnknownTags&#34;</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#34;component&#34;</span>] <span style=color:#75715e>//or true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>},
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;plugins&#34;</span><span style=color:#f92672>:</span> [
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;node_modules/better-docs/component&#34;</span>
+</span></span><span style=display:flex><span>],
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>#</span> <span style=color:#66d9ef>if</span> <span style=color:#a6e22e>you</span> <span style=color:#a6e22e>use</span> <span style=color:#a6e22e>npm</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>npm</span> <span style=color:#a6e22e>install</span> <span style=color:#f92672>-</span><span style=color:#a6e22e>g</span> <span style=color:#a6e22e>parcel</span><span style=color:#f92672>-</span><span style=color:#a6e22e>bundler</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>#</span> <span style=color:#a6e22e>or</span> <span style=color:#a6e22e>yarn</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>yarn</span> <span style=color:#a6e22e>global</span> <span style=color:#a6e22e>add</span> <span style=color:#a6e22e>parcel</span><span style=color:#f92672>-</span><span style=color:#a6e22e>bundler</span>
+</span></span></code></pre></div><h3 id=usage-1>Usage</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Some documented component
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @component
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Documented</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>props</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>text</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>props</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span><span style=color:#f92672>&gt;</span>{<span style=color:#a6e22e>text</span>}<span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+</span></span><span style=display:flex><span>  )
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>Documented</span>.<span style=color:#a6e22e>propTypes</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Text is a text
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>text</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>PropTypes</span>.<span style=color:#a6e22e>string</span>.<span style=color:#a6e22e>isRequired</span>,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Documented</span>
+</span></span></code></pre></div><h3 id=preview>Preview</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Some documented component
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @component
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @example
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * const text = &#39;some example text&#39;
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * return (
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *   &lt;Documented text={text} /&gt;
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * )
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Documented</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>props</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>///...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span></code></pre></div><p>You can put as many @example.<br>tags as you like in one component and &ldquo;caption&rdquo; each of them like this:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @component
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @example &lt;caption&gt;Example usage of method1.&lt;/caption&gt;
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * // your example here
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span></code></pre></div><h3 id=mixing-components-in-preview>Mixing components in preview</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// component-1.js
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Component 1
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @component
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Component1</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>props</span>) =&gt; {...}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// component-2.js
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * Component 2
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @component
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * @example
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * return (
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *   &lt;Component1&gt;
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *     &lt;Component2 prop1={&#39;some value&#39;}/&gt;
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *     &lt;Component2 prop1={&#39;some other value&#39;}/&gt;
+</span></span></span><span style=display:flex><span><span style=color:#75715e> *   &lt;/Component1&gt;
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * )
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Component2</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>props</span>) =&gt; {...}
+</span></span></code></pre></div></div><div class=pagination><a href=/book__a/content/jsdoc/basic/ class="left arrow">&#8592;</a>
+<a href=/book__a/content/yarn/install/ class="right arrow">&#8594;</a>
+<a href=# class=top>Top</a></div></main><footer><span>&copy; <time datetime="2022-09-25 02:50:30.132006641 +0000 UTC m=+0.276088368">2022</time> . Made with <a href=https://gohugo.io>Hugo</a> using the <a href=https://github.com/EmielH/tale-hugo/>Tale</a> theme.</span></footer></body></html>
