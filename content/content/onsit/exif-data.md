@@ -12,4 +12,4 @@ Es la informacion que queda en los archivos, de todo tipo.
 
 ## Webs
 
-[http://exif.regex.info/exif.cgi](http://exif.regex.info/exif.cgi) - exif.regex.info.
+[exif.regex](http://exif.regex.info/exif.cgi) - exif.regex.info.
