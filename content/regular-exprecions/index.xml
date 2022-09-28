@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Regular Exprecions on Book</title><link>https://rick-torrellas.github.io/book__a/content/regular-exprecions/</link><description>Recent content in Regular Exprecions on Book</description><generator>Hugo -- gohugo.io</generator><language>es</language><lastBuildDate>Wed, 28 Sep 2022 19:30:20 +0000</lastBuildDate><atom:link href="https://rick-torrellas.github.io/book__a/content/regular-exprecions/index.xml" rel="self" type="application/rss+xml"/><item><title>Resume</title><link>https://rick-torrellas.github.io/book__a/content/regular-exprecions/resume/</link><pubDate>Wed, 28 Sep 2022 19:31:07 +0000</pubDate><guid>https://rick-torrellas.github.io/book__a/content/regular-exprecions/resume/</guid><description>Todas las expreciones regulares empiezan y terminan con / /
+/cat/ /./
+El punto sirve para senalar todos los caracteres exepto los line breaks
+/./ Special Characters o wildcard Significa que encontrara una ocurrencia y varias seguidas
+/ree+/g Encontrara ree, reereeree , reeree,etc.
+?
+Significa que todo lo que este antes de el es opcional.
+/ea?/ buscara las e pero si encuenta ea, tambien lo muestra.
+Se puede ver como + con ?</description></item></channel></rss>

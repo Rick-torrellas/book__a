@@ -1,0 +1,83 @@
+<!doctype html><html lang=es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Mocks &#183; Book</title><link rel=stylesheet href=/book__a/css/style.css><link rel=stylesheet href=/book__a/css/fonts.css><link rel=icon href=/book__a/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/book__a/images/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/book__a/images/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/book__a/images/apple-touch-icon.png><link href rel=alternate type=application/rss+xml title=Book><script src=/book__a/js/darkmode.js></script></head><body><nav class=nav><div class=nav-container><a href=/><h2 class=nav-title>Book</h2></a><ul><li><a href=/book__a/categories/><span>Categorias</span></a></li><li><a href=/book__a/content/><span>Contenido</span></a></li><li><a href=/book__a/tags/><span>Etiquetas</span></a></li></ul></div></nav><div id=darkModeToggle onclick=toggleDarkMode()>&#9680;</div><main><div class=post><div class=post-info><span>Written by</span><br><span>on&nbsp;</span><time datetime="2022-09-28 19:22:43 +0000 UTC">September 28, 2022</time></div><h1 class=post-title>Mocks</h1><div class=post-line></div><p>Los mocks son maneras de creear funciones falsas, que contengan dummy code, que simulen actuar y retornar valores que nuestras funciones necesitan, funciones de otros modulos.</p><p>El objeto de testear la aplicacion no es comprobar si por ejemplo nuestra funcion, crea o no un arhivo, es comprobar como se comporta si le pasamos determinados valores o verificar que retorna.</p><p>Por eso si en nuestra funcion usamos, funciones d enode como readFile, es mejor crear nuestra propia vercion de esa funcion, que retorne lo que esa funcion retornaria, y simular que se esta ejecutando, asi evitar que se ejecute y cree un archivo donde no deberia o que haga una accion que no deberia.</p><h2 id=implemetancion>implemetancion</h2><p>Las simulaciones mock manuales son usadas para sustituir funcionalidad con datos falsos. Por ejemplo, en lugar de acceder a un recurso remoto como un sitio web o una base de datos, puede que se desee crear una simulación manual que permita usar datos falsos. Esto asegura que las pruebas serán rápidas y estables.</p><p>Las simulaciones mock manuales se definen escribiendo un modulo en el subdirectorio <strong>mocks</strong> el cual se debe encontrar adyacente al módulo. Por ejemplo, para simular un módulo llamado user en el directorio models, se debe crear un archivo <a href=http://user.sj/>user.sj</a> y colocarse en el directorio models/<strong>mocks</strong>. Si el directorio que se esta sustituyendo es un modulo de node (por ejemplo fs), el mock debe colocarse en el directorio <strong>mocks</strong> adyacente al directorio node_modules. Por ejemplo:</p><pre tabindex=0><code>├── config
+├── __mocks__
+│   └── fs.js
+├── models
+│   ├── __mocks__
+│   │   └── user.js
+│   └── user.js
+├── node_modules
+└── views
+</code></pre><p>Cuando una simulación mock manual existe para un módulo, el sistema de módulos de Jest usará dicho mock cuando se llame a la función jest.mock(&rsquo;nombreModulo&rsquo;). Sin embargo, para módulos de node, el mock será usado aunque no se llame a la función jest.mock(&rsquo;nombreModulo&rsquo;). Para omitir este comportamiento, se debe llamar de manera explicita a jest.umock(&rsquo;nombreModulo&rsquo;) en pruebas donde se desee usar la implementación real del módulo.</p><p>A continuación se muestra un ejemplo inventado de un módulo que provee un resumen de todos los archivos de un directorio.</p><pre tabindex=0><code>// FileSummarizer.js
+&#39;use strict&#39;;
+
+const fs = require(&#39;fs&#39;);
+
+function summarizeFilesInDirectorySync(directory) {
+  return fs.readdirSync(directory).map(fileName =&gt; ({
+    directory,
+    fileName,
+  }));
+}
+
+exports.summarizeFilesInDirectorySync = summarizeFilesInDirectorySync;
+</code></pre><p>Como es deseable que las pruebas eviten depender del disco (que es lento y frágil), se puede crear un mock manual para fs extendiendo el mock automático. El siguiente mock implementa versiones personalizadas del API de fs que puede ser usada en las pruebas:</p><pre tabindex=0><code>// __mocks__/fs.js
+&#39;use strict&#39;;
+
+const path = require(&#39;path&#39;);
+
+const fs = jest.genMockFromModule(&#39;fs&#39;);
+
+// This is a custom function that our tests can use during setup to specify
+// what the files on the &#34;mock&#34; filesystem should look like when any of the
+// `fs` APIs are used.
+let mockFiles = Object.create(null);
+function __setMockFiles(newMockFiles) {
+  mockFiles = Object.create(null);
+  for (const file in newMockFiles) {
+    const dir = path.dirname(file);
+
+    if (!mockFiles[dir]) {
+      mockFiles[dir] = [];
+    }
+    mockFiles[dir].push(path.basename(file));
+  }
+}
+
+// A custom version of `readdirSync` that reads from the special mocked out
+// file list set via __setMockFiles
+function readdirSync(directoryPath) {
+  return mockFiles[directoryPath] || [];
+}
+
+fs.__setMockFiles = __setMockFiles;
+fs.readdirSync = readdirSync;
+
+module.exports = fs;
+</code></pre><p>A continuación la prueba:</p><pre tabindex=0><code>// __tests__/FileSummarizer-test.js
+&#39;use strict&#39;;
+
+jest.mock(&#39;fs&#39;);
+
+describe(&#39;listFilesInDirectorySync&#39;, () =&gt; {
+  const MOCK_FILE_INFO = {
+    &#39;/path/to/file1.js&#39;: &#39;console.log(&#34;file1 contents&#34;);&#39;,
+    &#39;/path/to/file2.txt&#39;: &#39;file2 contents&#39;,
+  };
+
+  beforeEach(() =&gt; {
+    // Set up some mocked out file info before each test
+    require(&#39;fs&#39;).__setMockFiles(MOCK_FILE_INFO);
+  });
+
+  test(&#39;includes all files in the directory in the summary&#39;, () =&gt; {
+    const FileSummarizer = require(&#39;../FileSummarizer&#39;);
+    const fileSummary = FileSummarizer.summarizeFilesInDirectorySync(
+      &#39;/path/to&#39;
+    );
+
+    expect(fileSummary.length).toBe(2);
+  });
+});
+</code></pre><p>El ejemplo de mock mostrado aquí usa <code>[jest.genMockFrom Module](&lt;https://deltice.github.io/jest/docs/jest-object.html#jestgenmockfrommodulemodulename>)</code>  para generar un mock automático, y reemplazar su comportamiento por defecto. Este es el enfoque recomendado, pero es completamente opcional. Si no se desea usar el mock automático, se puede simplemente exportar las funciones desde el archivo del mock. Una desventaja de los mocks completamente manuales es que realmente son manuales. Esto quiere decir que para actualizarlos manualmente cada vez que se modifica el módulo que reemplazan. Debido a esto, es mejor usar o extender el mock automático cuando se ajuste a las necesidades del proyecto.</p><p>Para garantizar que un mock manual y su implementación real se mantengan sincronizados, puede ser útil requerir el modulo real a través de require.requireActual(nombreModulo) en el mock manual y modificarlo con las funciones mock antes de exportarlo.</p></div><div class=pagination><a href=/book__a/content/jest/tutorial/matchers/ class="left arrow">&#8592;</a>
+<a href=/book__a/content/jest/tutorial/setup--teardown/ class="right arrow">&#8594;</a>
+<a href=# class=top>Top</a></div></main><footer><span>&copy; <time datetime="2022-09-28 23:49:22.083896045 +0000 UTC m=+0.375761351">2022</time> . Made with <a href=https://gohugo.io>Hugo</a> using the <a href=https://github.com/EmielH/tale-hugo/>Tale</a> theme.</span></footer></body></html>

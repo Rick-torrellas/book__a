@@ -1,0 +1,44 @@
+<!doctype html><html lang=es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>&#183; Book</title><link rel=stylesheet href=/book__a/css/style.css><link rel=stylesheet href=/book__a/css/fonts.css><link rel=icon href=/book__a/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/book__a/images/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/book__a/images/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/book__a/images/apple-touch-icon.png><link href rel=alternate type=application/rss+xml title=Book><script src=/book__a/js/darkmode.js></script></head><body><nav class=nav><div class=nav-container><a href=/><h2 class=nav-title>Book</h2></a><ul><li><a href=/book__a/categories/><span>Categorias</span></a></li><li><a href=/book__a/content/><span>Contenido</span></a></li><li><a href=/book__a/tags/><span>Etiquetas</span></a></li></ul></div></nav><div id=darkModeToggle onclick=toggleDarkMode()>&#9680;</div><main><div class=post><div class=post-info><span>Written by</span></div><h1 class=post-title></h1><div class=post-line></div><h1 id=asyncawait>async/await</h1><p>Como usar aync/await con una promesa?</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>pepe</span>() {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> Promise(<span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>resolve</span>, <span style=color:#a6e22e>reject</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>setTimeout</span>(() =&gt; {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;Primera cadena de promesas&#39;</span>);
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>resolve</span>(<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>        }, <span style=color:#ae81ff>3000</span>); <span style=color:#75715e>// (*)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>      }).<span style=color:#a6e22e>then</span>(<span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>result</span>) { <span style=color:#75715e>// (**)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>result</span>); <span style=color:#75715e>// 1
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      })
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>nani</span>(){ 
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>pepe</span>()
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#a6e22e>nani</span>();
+</span></span></code></pre></div><p>o</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>pepe</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Promise(<span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>resolve</span>, <span style=color:#a6e22e>reject</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>setTimeout</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;Primera cadena de promesas&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>resolve</span>(<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>  }, <span style=color:#ae81ff>3000</span>); <span style=color:#75715e>// (*)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>}).<span style=color:#a6e22e>then</span>(<span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>result</span>) { <span style=color:#75715e>// (**)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>result</span>); <span style=color:#75715e>// 1
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>})
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>nani</span>(){ 
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>pepe</span>
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#a6e22e>nani</span>();
+</span></span></code></pre></div><h1 id=agrupar-funciones-asyncronas>Agrupar funciones asyncronas</h1><p>Juntar funciones asyncronas para que se ejecuten como un bloque asyncrono.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>nani</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> Promise.<span style=color:#a6e22e>all</span>([
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fetch</span>(<span style=color:#a6e22e>url1</span>),
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fetch</span>(<span style=color:#a6e22e>url2</span>),
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fetch</span>(<span style=color:#a6e22e>url3</span>)
+</span></span><span style=display:flex><span>])
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div><div class=pagination><a href=/book__a/content/javascript/concepts/promesas/basic/ class="left arrow">&#8592;</a>
+<a href=/book__a/content/vscode/content/snippet/ class="right arrow">&#8594;</a>
+<a href=# class=top>Top</a></div></main><footer><span>&copy; <time datetime="2022-09-28 23:49:22.042049084 +0000 UTC m=+0.333914490">2022</time> . Made with <a href=https://gohugo.io>Hugo</a> using the <a href=https://github.com/EmielH/tale-hugo/>Tale</a> theme.</span></footer></body></html>
