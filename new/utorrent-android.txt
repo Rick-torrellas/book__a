@@ -1,0 +1,3 @@
+utorrent torrent downloaded files location
+
+Este equipo\Galaxy J7 Star\Card\Android\data\com.utorrent.client\files

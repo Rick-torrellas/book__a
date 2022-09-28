@@ -1,0 +1,47 @@
+Se pueden pasar tanto arrays, array de objeto y obejtos a un constructor, lo que no se es como definir los valores de un objeto por ejemplo.
+
+
+//Objeto
+
+class Nalga {
+    constructor(objeto ) {
+        this.objeto = objeto;
+        this.name = objeto.name;
+    }
+    Culo() {
+        console.log(this.objeto.apellido)
+    }
+}
+
+let objeto = {
+    name: "Culo",
+    apellido: "Vagina"
+}
+
+let nalga = new Nalga(objeto);
+
+console.log(nalga.objeto.name)
+console.log(nalga.objeto.apellido)
+
+nalga.Culo()
+
+// Array de objetos
+
+class Culo {
+    constructor(arrei_objeto) {
+        this.arrei_objeto = arrei_objeto;
+    }
+}
+
+let arrei_objeto = [
+    {
+        name: "Culo"
+    },
+    {
+        name: "Vagina"
+    }
+]
+
+let culo = new Culo(arrei_objeto)
+
+console.log(culo)

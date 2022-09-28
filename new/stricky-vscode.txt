@@ -1,0 +1,7 @@
+Te permite fijar el metodo oc lase en el que te encuentras.
+
+pasos:
+
+* configuracion
+* buscas experimental sticky
+* habilitas, shows the nested current scopes during the scroll at the top of the editor.

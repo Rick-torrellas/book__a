@@ -1,0 +1,9 @@
+Darle "add torrent from URL" 
+
+Agregar esto antes de codigo
+magnet:?xt=urn:btih:
+
+ejemplo
+
+magnet:?xt=urn:btih:Codigo
+magnet:?xt=urn:btih:F0EA582F1FB85BB0D6DEAEB43B74C39B328AC1CE
