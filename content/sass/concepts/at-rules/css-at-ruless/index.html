@@ -1,0 +1,63 @@
+<!doctype html><html lang=es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>CSS At-Rules &#183; Book</title><link rel=stylesheet href=/book__a/css/style.css><link rel=stylesheet href=/book__a/css/fonts.css><link rel=icon href=/book__a/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/book__a/images/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/book__a/images/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/book__a/images/apple-touch-icon.png><link href rel=alternate type=application/rss+xml title=Book><script src=/book__a/js/darkmode.js></script></head><body><nav class=nav><div class=nav-container><a href=/><h2 class=nav-title>Book</h2></a><ul><li><a href=/book__a/categories/><span>Categorias</span></a></li><li><a href=/book__a/content/><span>Contenido</span></a></li><li><a href=/book__a/tags/><span>Etiquetas</span></a></li></ul></div></nav><div id=darkModeToggle onclick=toggleDarkMode()>&#9680;</div><main><div class=post><div class=post-info><span>Written by</span><br><span>on&nbsp;</span><time datetime="2022-09-25 11:31:01 +0000 UTC">September 25, 2022</time></div><h1 class=post-title>CSS At-Rules</h1><div class=post-line></div><p>Sass supports all the at-rules that are part of CSS proper. To stay flexible and forwards-compatible with future versions of CSS, Sass has general support that covers almost all at-rules by default. A CSS at-rule is written <code>@&lt;name> &lt;value>, @&lt;name> { ... }, or @&lt;name> &lt;value> { ... }</code>. The name must be an identifier, and the value (if one exists) can be pretty much anything. Both the name and the value can contain interpolation.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>@<span style=color:#66d9ef>namespace</span> <span style=color:#f92672>svg</span> <span style=color:#f92672>url</span><span style=color:#f92672>(</span><span style=color:#f92672>http</span><span style=color:#f92672>://</span><span style=color:#f92672>www</span>.<span style=color:#a6e22e>w3</span>.<span style=color:#a6e22e>org</span><span style=color:#f92672>/</span><span style=color:#f92672>2000</span><span style=color:#f92672>/</span><span style=color:#f92672>svg</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>@<span style=color:#66d9ef>font-face</span> {
+</span></span><span style=display:flex><span>  <span style=color:#f92672>font-family</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Open Sans&#34;</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>src</span><span style=color:#f92672>:</span> <span style=color:#f92672>url</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/fonts/OpenSans-Regular-webfont.woff2&#34;</span><span style=color:#f92672>)</span> <span style=color:#f92672>format</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;woff2&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>@<span style=color:#66d9ef>counter-style</span> <span style=color:#f92672>thumbs</span> {
+</span></span><span style=display:flex><span>  <span style=color:#f92672>system</span><span style=color:#f92672>:</span> <span style=color:#f92672>cyclic</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>symbols</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;\1F44D&#34;</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>If a CSS at-rule is nested within a style rule, the two automatically swap positions so that the at-rule is at the top level of the CSS output and the style rule is within it. This makes it easy to add conditional styling without having to rewrite the style rule’s selector.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#f92672>SCSS</span> <span style=color:#f92672>SYNTAX</span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>print-only</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>display</span>: <span style=color:#66d9ef>none</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#960050;background-color:#1e0010>@media</span> <span style=color:#960050;background-color:#1e0010>print</span> <span style=color:#960050;background-color:#1e0010>{</span> <span style=color:#66d9ef>display</span>: <span style=color:#66d9ef>block</span>; }
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>}</span>
+</span></span></code></pre></div><h2 id=media>@media</h2><p>The @media rule does all of the above and more. In addition to allowing interpolation, it allows SassScript expressions to be used directly in the feature queries.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#f92672>SCSS</span> <span style=color:#f92672>SYNTAX</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>$</span><span style=color:#f92672>layout-breakpoint-small</span><span style=color:#f92672>:</span> <span style=color:#f92672>960px</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>@<span style=color:#66d9ef>media</span> <span style=color:#f92672>(</span><span style=color:#f92672>min-width</span><span style=color:#f92672>:</span> <span style=color:#f92672>$</span><span style=color:#f92672>layout-breakpoint-small</span><span style=color:#f92672>)</span> {
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>hide-extra-small</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>display</span>: <span style=color:#66d9ef>none</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>When possible, Sass will also merge media queries that are nested within one another to make it easier to support browsers that don’t yet natively support nested @media rules.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>@<span style=color:#66d9ef>media</span> <span style=color:#f92672>(</span><span style=color:#f92672>hover</span><span style=color:#f92672>:</span> <span style=color:#f92672>hover</span><span style=color:#f92672>)</span> {
+</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>button</span>:<span style=color:#a6e22e>hover</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>border</span>: <span style=color:#ae81ff>2</span><span style=color:#66d9ef>px</span> <span style=color:#66d9ef>solid</span> <span style=color:#66d9ef>black</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#960050;background-color:#1e0010>@media</span> <span style=color:#960050;background-color:#1e0010>(color)</span> <span style=color:#960050;background-color:#1e0010>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>border-color</span>: <span style=color:#ae81ff>#036</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>}</span>
+</span></span></code></pre></div><h2 id=supports>@supports</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>@<span style=color:#66d9ef>mixin</span> <span style=color:#f92672>sticky-position</span> {
+</span></span><span style=display:flex><span>  <span style=color:#f92672>position</span><span style=color:#f92672>:</span> <span style=color:#f92672>fixed</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  @<span style=color:#66d9ef>supports</span> <span style=color:#f92672>(</span><span style=color:#f92672>position</span><span style=color:#f92672>:</span> <span style=color:#f92672>sticky</span><span style=color:#f92672>)</span> {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>position</span><span style=color:#f92672>:</span> <span style=color:#f92672>sticky</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>banner</span> {
+</span></span><span style=display:flex><span>  <span style=color:#960050;background-color:#1e0010>@include</span> <span style=color:#960050;background-color:#1e0010>sticky-position</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=keyframes>@keyframes</h2><p>The @keyframes rule works just like a general at-rule, except that its child rules must be valid keyframe rules (%, from, or to) rather than normal selectors.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>@<span style=color:#66d9ef>keyframes</span> <span style=color:#f92672>slide-in</span> {
+</span></span><span style=display:flex><span>  <span style=color:#f92672>from</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin-left</span>: <span style=color:#ae81ff>100</span><span style=color:#66d9ef>%</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>width</span>: <span style=color:#ae81ff>300</span><span style=color:#66d9ef>%</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>70</span><span style=color:#f92672>%</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin-left</span>: <span style=color:#ae81ff>90</span><span style=color:#66d9ef>%</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>width</span>: <span style=color:#ae81ff>150</span><span style=color:#66d9ef>%</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>to</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin-left</span>: <span style=color:#ae81ff>0</span><span style=color:#66d9ef>%</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>width</span>: <span style=color:#ae81ff>100</span><span style=color:#66d9ef>%</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div><div class=pagination><a href=/book__a/content/sass/concepts/at-rules/at-root/ class="left arrow">&#8592;</a>
+<a href=/book__a/content/sass/concepts/interpolation/ class="right arrow">&#8594;</a>
+<a href=# class=top>Top</a></div></main><footer><span>&copy; <time datetime="2022-09-28 16:27:17.265425524 +0000 UTC m=+0.377219867">2022</time> . Made with <a href=https://gohugo.io>Hugo</a> using the <a href=https://github.com/EmielH/tale-hugo/>Tale</a> theme.</span></footer></body></html>
