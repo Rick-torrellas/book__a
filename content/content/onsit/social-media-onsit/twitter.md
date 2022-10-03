@@ -40,3 +40,17 @@ Recordar que todos los operadores se pueden combinar, para crear busquedas mas e
 * geocode: Usando cordenadas, se puede buscan los tweets efectuados en cierta area
   * `geocode:39.550051,-105.782067.5km `
 * AND OR - El mismo significado que tiene en google.
+
+## Tools
+
+### Webs
+
+* [socialbearing](https://socialbearing.com/) - Se encarga de analizar por completo una cuenta de twitter.
+* [twitonomy](https://www.twitonomy.com/) - Se encarga de analizar por completo una cuenta de twitter.
+* [sleepingtime](https://sleepingtime.org/) - Registra el tiempo de actividad de una cuenta de twitter.
+* [mentionmapp](https://mentionmapp.com/) - Te muestra un grafico o un mapa, con todas las meciones a un cuenta de twitter.
+* [tweetbeaver](https://tweetbeaver.com/) - Saca informacion de una cuenta de twetter.
+* [spoonbill](https://spoonbill.io/) - Te muestra cada vez que alguein cambio informacion en su perfil de tweeter.
+* [tinfoleak](https://tinfoleak.com/) - Re colecta informacion de cuentas de tweeter.
+* [tweetdeck.twitter](https://tweetdeck.twitter.com/) - Es una coleccionde herramientas para usar tweeter mas eficientemente.
+
